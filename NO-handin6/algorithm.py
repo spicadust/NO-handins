@@ -75,7 +75,7 @@ def check_kkt(x_star, Q, b, Delta, atol):
     def calc_lambda_star(x_star, Q, b, Delta):
         grad_f_at_x_star = df(x_star, Q, b)
         grad_h_at_x_star = grad_constraint(x_star)
-        if np.isclose(np.linalg.norm(x_star), Delta):
+        if np.isclose(np.linalg.norm(x_star), Delta, atol=atol):
             lambda_star = -np.dot(grad_f_at_x_star, grad_h_at_x_star) / np.dot(
                 grad_h_at_x_star, grad_h_at_x_star)
         else:
